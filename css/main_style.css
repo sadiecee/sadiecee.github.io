@@ -1,5 +1,14 @@
+/*
+colorblind safe color palettes from colorbrewer2.org
+#e66101 dark orange
+#fdb863 light orange
+#f7f7f7 white
+#b2abd2 light purple
+#5e3c99 dark purple
+*/
+
 body {
-  background-color: #e66101;
+  background-color: #fdb863;
   color: #fdb863;
   text-align: center;
 }
