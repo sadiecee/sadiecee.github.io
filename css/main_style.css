@@ -27,3 +27,10 @@ research-interests {
   /*selects text alignment to left of page */
   text-align: left;
 }
+
+footer {
+  /*selects bacground color */
+  background-color: #b2abd2;
+  /*selects foreground color */
+  color: #5e3c99
+}
