@@ -8,16 +8,22 @@ colorblind safe color palettes from colorbrewer2.org
 */
 
 body {
+  /*selects background color */
   background-color: #fdb863;
+  /*selects foreground color */
   color: #5e3c99;
+  /*selects text alignment to center of page */
   text-align: center;
 }
 
 h1 {
+  /*selects foreground color */
   color: #f7f7f7
 }
 
 research-interests {
+  /*selects foreground color */
   color: #f7f7f7;
+  /*selects text alignment to left of page */
   text-align: left;
 }
