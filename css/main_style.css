@@ -9,23 +9,52 @@ colorblind safe color palettes from colorbrewer2.org
 
 body {
   /*selects background color */
-  background-color: #fdb863;
+  background-color: #92c5de;
   /*selects foreground color */
-  color: #5e3c99;
+  color: #0571b0;
   /*selects text alignment to center of page */
   text-align: center;
+  margin: 0;
 }
 
 h1 {
   /*selects foreground color */
-  color: #f7f7f7
+  color: #f7f7f7;
+  padding: 5px;
+  margin: 0;
 }
 
-research-interests {
+#body-container {
+  background-color: #f7f7f7;
+  max-width: 1000px;
+  margin: auto;
+  height: 100vh;
+  border: 2px solid #f7f7f7;
+  border-radius: 25px;
+}
+
+#header {
+  background-color: #0571b0;
+
+}
+
+#profile-picture {
+  float: left;
+}
+
+#welcome-text {
+  padding-top: 25px;
+  font-size: 25px;
+}
+
+#research-interests {
   /*selects foreground color */
   color: #f7f7f7;
   /*selects text alignment to left of page */
   text-align: left;
+  font-size: 25px;
+  position: relative;
+  left: 50px;
 }
 
 footer {
