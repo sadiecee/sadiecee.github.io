@@ -14,36 +14,50 @@ body {
   color: #0571b0;
   /*selects text alignment to center of page */
   text-align: center;
+  /*creates 0px of space around element */
   margin: 0;
 }
 
 h1 {
   /*selects foreground color */
   color: #f7f7f7;
+  /*creates 5px of space within this element between content and border */
   padding: 5px;
+  /*creates 0px of space around element */
   margin: 0;
 }
 
 #body-container {
+  /*selects a background color */
   background-color: #f7f7f7;
+  /*sets the max width of an element */
   max-width: 1000px;
+  /*horizontally centers an element in its container */
   margin: auto;
+  /*specifies height of element */
   height: 100vh;
+  /*creates a 2px solid white visible border */
   border: 2px solid #f7f7f7;
+  /*degree to which a border's corners are rounded */
   border-radius: 25px;
 }
 
 #header {
+  /*sets a background color */
   background-color: #0571b0;
 
 }
 
 #profile-picture {
+  /*removes an object from the normal flow of the page (though still part of the
+  flow) so text can wrap around it */
   float: left;
 }
 
 #welcome-text {
+  /*sets the padding between the top of its content and its border to 25px */
   padding-top: 25px;
+  /*changes the font size to 25px */
   font-size: 25px;
 }
 
@@ -52,8 +66,11 @@ h1 {
   color: #f7f7f7;
   /*selects text alignment to left of page */
   text-align: left;
+  /*changes the font size to 25px */
   font-size: 25px;
+  /*sets the element position relation to its normal position */
   position: relative;
+  /*offsets the element 50px to the left from its normal position */
   left: 50px;
 }
 
