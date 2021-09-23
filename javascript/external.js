@@ -1,5 +1,7 @@
 user_name = window.prompt("Please enter your name", "Type your name here");
-document.write(user_name);
+var header = "Welcome to my website " + user_name + "!";
+//document.write(header);
+//document.write(user_name);
 
 // document.write("Where is my JS code?");
 //window.alert(5 + 6);

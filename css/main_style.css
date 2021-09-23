@@ -80,3 +80,14 @@ footer {
   /*selects foreground color */
   color: #5e3c99
 }
+
+#copyright {
+  /*positions the textbox outside the normal flow of the page*/
+  position: absolute;
+  /*makes the copyright bounding box take up the entire width of the page*/
+  width: 100%;
+  /*aligns the text to the center*/
+  text-align: center;
+  /*offsets it 20px from the bottom*/
+  bottom: 20px;
+}
