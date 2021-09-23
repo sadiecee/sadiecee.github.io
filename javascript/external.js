@@ -1,5 +1,8 @@
 user_name = window.prompt("Please enter your name", "Type your name here");
-var header = "Welcome to my website " + user_name + "!";
+document.write(user_name);
+
+//var header = "Welcome to my website " + user_name + "!";
+//var headerupdated = document.getElementById('input_header').innerHTML = input_header+user_name;
 //document.write(header);
 //document.write(user_name);
 
