@@ -35,7 +35,7 @@ h1 {
   /*horizontally centers an element in its container */
   margin: auto;
   /*specifies height of element */
-  height: 100vh;
+  height: 150vh;
   /*creates a 2px solid white visible border */
   border: 2px solid #f7f7f7;
   /*degree to which a border's corners are rounded */
