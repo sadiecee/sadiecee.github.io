@@ -35,7 +35,7 @@ h1 {
   /*horizontally centers an element in its container */
   margin: auto;
   /*specifies height of element */
-  height: 150vh;
+  height: 120vh;
   /*creates a 2px solid white visible border */
   border: 2px solid #f7f7f7;
   /*degree to which a border's corners are rounded */
@@ -71,7 +71,7 @@ h1 {
   /*sets the element position relation to its normal position */
   position: relative;
   /*offsets the element 50px to the left from its normal position */
-  left: 100px;
+  left: 50px;
 }
 
 #webmap-reviews{
@@ -94,9 +94,9 @@ footer {
   /*positions the textbox outside the normal flow of the page*/
   position: absolute;
   /*makes the copyright bounding box stay in the bottom left hand corner of the page*/
-  width: 100px;
+  width: 80%;
   /*aligns the text to the center*/
   text-align: center;
   /*offsets it 20px from the bottom*/
-  bottom: -300px;
+  bottom: -150px;
 }
