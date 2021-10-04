@@ -42,14 +42,14 @@
       </script>
     </div>
     <div id ="calculation">
-      <form method="post" action="http://server1">
+      <form method="post">
         Enter box width:
           <input type="number" name="width">
           <br/>
         Enter box height:
           <input type="number" name="length">
           <br/>
-        <input type="submit" value="Calculate Area" >
+        <input type="submit" value="Calculate Area" onsubmit="area()">
       </form>
       <script>
         area()
