@@ -71,12 +71,15 @@ h1 {
   /*sets the element position relation to its normal position */
   position: relative;
   /*offsets the element 50px to the left from its normal position */
-  left: 50px;
+  left: 100px;
 }
 
 #webmap-reviews{
+  /*aligns text to the left */
   text-align: left;
-  font-size: 25px;
+  /*sets font size */
+  font-size: 15px;
+  /*maintains relative position within the flow of the page */
   position: relative;
 }
 
@@ -90,10 +93,10 @@ footer {
 #copyright {
   /*positions the textbox outside the normal flow of the page*/
   position: absolute;
-  /*makes the copyright bounding box take up the entire width of the page*/
-  width: 100%;
+  /*makes the copyright bounding box stay in the bottom left hand corner of the page*/
+  width: 100px;
   /*aligns the text to the center*/
   text-align: center;
   /*offsets it 20px from the bottom*/
-  bottom: 20px;
+  bottom: -300px;
 }
