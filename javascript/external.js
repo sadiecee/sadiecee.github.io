@@ -45,16 +45,31 @@ var webmaps =
     document.write("<table width=100%>");
     for (var row=0; row < webmaps.length; row++)
     {
-      document.write("<tr>");
       for (var column=0; column < webmaps[0].length; column++)
       {
-        document.write("<td>" + webmaps[row][column] + "</td>");
+        if(column < 2)
+        {
+          document.write("<td>" + webmaps[row][column] + "</td>");
+        }
+        else
+        {
+          document.write("<td>" + webmaps[row][column] + "</td>");
+        }
       }
       document.write("</tr>");
     }
     document.write("</table>")
   }
 
+function area(){
+  let width = prompt("Enter a box width here.");
+  let length = prompt("Enter a box length here.");
+
+  // A prompt box is used to prompt users to input a value before entering a page
+  area=width * length
+  document.write(area)
+
+}
 
 
 //var header = "Welcome to my website " + user_name + "!";
