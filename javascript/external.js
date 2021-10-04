@@ -62,8 +62,8 @@ var webmaps =
   }
 
 function area(){
-  let width = prompt("Enter a box width here.");
-  let length = prompt("Enter a box length here.");
+  // let width = prompt("Enter a box width here.");
+  // let length = prompt("Enter a box length here.");
 
   // A prompt box is used to prompt users to input a value before entering a page
   area=width * length

@@ -74,6 +74,13 @@ h1 {
   left: 50px;
 }
 
+#calculation{
+  position: relative;
+  right: 10px;
+  bottom:-20px;
+}
+
+
 #webmap-reviews{
   /*aligns text to the left */
   text-align: left;
