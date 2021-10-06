@@ -50,6 +50,7 @@ var webmaps =
         if(column < 2)
         {
           document.write("<td>" + webmaps[row][column] + "</td>");
+
         }
         else
         {
@@ -61,9 +62,20 @@ var webmaps =
     document.write("</table>")
   }
 
-function area(){
-  document.write(width * length)
-}
+
+function area_calculator()
+{
+  //gets user input values from the form element
+  var x = document.getElementById("width").value;
+  var y = document.getElementById("length").value;
+
+  //calculates the area
+  var area = x*y;
+
+  //prints out the area for the user
+  alert("The area of your box is " + area);
+  }
+
 
 
 //var header = "Welcome to my website " + user_name + "!";
