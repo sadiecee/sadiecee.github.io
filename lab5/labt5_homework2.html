@@ -88,20 +88,6 @@
             center: { lat: 0, lng: -100 },
             mayTypeId: "terrain",
           });
-          const flightPlanCoordinates = [
-            { lat: 37.772, lng: -122.214 },
-            { lat: 21.291, lng: -157.821 },
-            { lat: -18.142, lng: 178.431 },
-            { lat: -27.467, lng: 153.827 },
-          ];
-          const flightPath = new google.maps.Polyline){
-            path: flightPlanCoordinates,
-            geodesic: true,
-            strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
-            strokeWeight: 2,
-          });
-          flightPath.setMap(map);
         }
       </script>
 
@@ -131,75 +117,19 @@
             results, status) {
               if (status == 'OK'){
                 map.setCenter(results[0].geometry.location);
-                var marker  = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
-                });
+                for(i=0, i < results.length, i++){
+                  var marker  = new google.maps.Marker({
+                    map: map,
+                    position: results[i].geometry.location
+                  });
+                }
               } else {
                 alert('Geocode was not successful for the following reason: ' + status);
               }
             });
         }
     </script>
-        <!-- task 2
-        <script>
-          function initMap(){
-            const myLatLong = {lat: -25.363, lng: 131.044};
-            const map = new google.map.Map(document.getElementById("map"), {
-              zoom: 4,
-              center: myLatLong,
-            });
-            const marker = new google.maps.Marker({
-              position: myLatLong,
-              map,
-              title: "Click to zoom",
-            });
-            map.addListener("center_changed", () => {
-              //3 seconds after the center of the map has chaned, pan back to the
-              //marker.
-              window.setTimeout(() => {
-                map.panTo(marker.getPosition());
-              }, 3000);
-            });
-            marker.addListener("click",() => {
-              map.setZoom(8);
-              map.setCenter(marker.getPosition());
-            });
-          }
-        </script>
 
-        task3
-        <script>
-          function initMap(){
-            const center = {lat: -25.363, lng: 131.044};
-            const zoom = 4;
-            // [START map_interaction_cooperative_mapoptions]
-            new google.maps.Map(document.getElementById("map"), {
-              zoom,
-              center,
-              gestureHandling: "cooperative",
-            });
-            //[END maps_interaction_cooperative_mapoptions]
-          }
-          // [END maps_interaction_cooperative]
-          </script>
-
-
-        <!-- Async script executes immediately and must be after any DOM elements used in callback -->
-        <!-- task 4 -->
-        <script>
-          new google.maps.Map(document.getElementById("map"), {
-              zoom: 8,
-              center: {lat:-34.397, lng: 150.644},
-              mapId: "5d5bf34a4d9c28eb",
-            });
-
-          </script>
-        <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvvTDwBCPV_xQ0Cpoiei0SE7_-S7Rtlcs&callback=initMap&libraries=&v=weekly"
-          async
-        ></script>
-    </script>
   </head>
   <body onload="initialize()">
       <!--task 1-->
