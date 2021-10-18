@@ -35,6 +35,7 @@
       <h3>My Google Maps Demo</h3>
     <!-- The div element for the map-->
     <div id="map"></div>
+    <!--task 5a
     <script>
       function initMap(){
         const uluru = {lat: -25.363, lng: 131.044};
@@ -83,13 +84,41 @@
       });
     }
       </script>
+    -->
+    <!-- task 5b-->
+    <script>
+      function initMap(){
+        const map = new google.maps.Map(document.getElementById("map"),{
+          zoom: 3,
+          center: { lat: 0, lng: -100 },
+          mayTypeId: "terrain",
+        });
+        const flightPlanCoordinates = [
+          { lat: 37.772, lng: -122.214 },
+          { lat: 21.291, lng: -157.821 },
+          { lat: -18.142, lng: 178.431 },
+          { lat: -27.467, lng: 153.827 },
+        ];
+        const flightPath = new google.maps.Polyline){
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2,
+        });
+        flightPath.setMap(map);
+      }
+    </script>
+
     <!-- Async script executes immediately and must be after any DOM elements used in callback.-->
     <script
       src="https//maps.googleapis.come/maps/api/js?key=AIzaSyDvvTDwBCPV_xQ0Cpoiei0SE7_-S7Rtlcs&callback=initMap&libraries=&v=weekly"
       async
       ></script>
 
-      <div id="map"></div>
+
+
+
       <!-- task 2
       <script>
         function initMap(){
