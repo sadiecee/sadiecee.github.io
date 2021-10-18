@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 1 of Homework: Complete a web mapping application using
+    Google Maps API</title>
+
+    <style type="text/css">
+      /* set up the size of the div element that contains the map */
+      #map {
+        height: 400px;
+        /* the height is 400 pixels */
+        width: 100%;
+        /* the width is the width of the web page */
+      }
+    </style>
+
+    <script>
+    // initialize and add the map
+      function initMap(){
+        // the location of uluru
+        const uluru = { lat: -25.244, lng: 131.036 };
+        // the map, centered at uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: uluru,
+        });
+        // the marker, positioned at uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+      }
+
+      function handleselected(randomvar){
+        if (randomvar == "Polyline") {
+          new google.maps.Map(document.getElementById("map"), {
+              zoom: 2,
+              center: {lat: -25.244, lng: 131.036},
+              mapId: "5d5bf34a4d9c28eb",
+            });
+        } else {
+          new google.maps.Map(document.getElementById("map"), {
+              zoom: 8,
+              center: {lat: -25.244, lng: 131.036},
+              mapId: "5d5bf34a4d9c28eb",
+            });
+        }
+      }
+
+      </script>
+
+        <script>
+          new google.maps.Map(document.getElementById("map"), {
+              zoom: 8,
+              center: {lat:-34.397, lng: 150.644},
+              mapId: "5d5bf34a4d9c28eb",
+            });
+
+          </script>
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvvTDwBCPV_xQ0Cpoiei0SE7_-S7Rtlcs&callback=initMap&libraries=&v=weekly"
+          async
+        ></script>
+    </script>
+  </head>
+  <body>
+
+    <div id='map'></div>
+
+
+<div id="selection">
+    <select onchange="handleselected(randomvar)">
+        <option selected>-Select a map type!-</option>
+        <option value="polyline">Polyline</option>
+        <option value="polygon">Polygon</option>
+    </select>
+</div>
+
+    </body>
+  </html>
