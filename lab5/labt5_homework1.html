@@ -47,6 +47,22 @@
         }
       }
 
+      var polyline = new google.maps.Polyline({
+          strokeColor: "black",
+          strokeOpacity: .5,
+          strokeWeight:  1
+          });
+
+      var polygon = new google.maps.Polygon({
+            strokeColor: "black",
+            strokeOpacity: .5,
+            strokeWeight:  1
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+          });
+
+
+
           // new google.maps.Map(document.getElementById("map"), {
           //     zoom: 8,
           //     center: {lat:-34.397, lng: 150.644},
@@ -66,7 +82,7 @@
 
 
 <div id="selection">
-    <select onchange="handleselected(randomvar)">
+    <!-- <select onchange="handleselected(randomvar)"> -->
         <option selected>-Select a map type!-</option>
         <option value="polyline">Polyline</option>
         <option value="polygon">Polygon</option>
