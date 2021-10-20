@@ -23,7 +23,7 @@
 
       <!-- Async script executes immediately and must be after any DOM elements used in callback.-->
       <script
-        src="https//maps.googleapis.come/maps/api/js?key=AIzaSyDvvTDwBCPV_xQ0Cpoiei0SE7_-S7Rtlcs&callback=initMap&libraries=&v=weekly"
+        src="https://maps.googleapis.come/maps/api/js?key=AIzaSyDvvTDwBCPV_xQ0Cpoiei0SE7_-S7Rtlcs&callback=initMap&libraries=&v=weekly"
         async
         ></script>
 
@@ -31,7 +31,7 @@
         var geocoder;
         var map;
         function initialize(){
-          geocoder = new.google.maps.Geocoder();
+          geocoder = new google.maps.Geocoder();
           var latlng = new google.maps.LatLng(-34.397, 150,644);
           var mapOptions = {
             zoom: 2,
@@ -47,7 +47,7 @@
             results, status) {
               if (status == 'OK'){
                 map.setCenter(results[0].geometry.location);
-                for(i=0, i < results.length, i++){
+                for(i=0; i < results.length; i++){
                   var marker  = new google.maps.Marker({
                     map: map,
                     position: results[i].geometry.location

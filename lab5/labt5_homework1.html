@@ -31,8 +31,28 @@
         });
       }
 
+      var polyline = new google.maps.Polyline({
+          strokeColor: "black",
+          strokeOpacity: .5,
+          strokeWeight:  1
+          });
+
+      var polygon = new google.maps.Polygon({
+            strokeColor: "black",
+            strokeOpacity: .5,
+            strokeWeight:  1
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+          });
+
       function handleselected(randomvar){
-        if (randomvar == "Polyline") {
+        let theSelection = document.getElementById('dropdown').value
+        if (theSelection == "Polyline") {
+          polyline.setMap(map);
+          map.addListener("click",function(e) {
+            var pathpoly - polyline.getPath();
+            pathpoly.push(e.latlng);
+          })
           new google.maps.Map(document.getElementById("map"), {
               zoom: 2,
               center: {lat: -25.244, lng: 131.036},
@@ -47,19 +67,7 @@
         }
       }
 
-      var polyline = new google.maps.Polyline({
-          strokeColor: "black",
-          strokeOpacity: .5,
-          strokeWeight:  1
-          });
 
-      var polygon = new google.maps.Polygon({
-            strokeColor: "black",
-            strokeOpacity: .5,
-            strokeWeight:  1
-            fillColor: "#FF0000",
-            fillOpacity: 0.35,
-          });
 
 
 
@@ -82,8 +90,7 @@
 
 
 <div id="selection">
-    <!-- <select onchange="handleselected(randomvar)"> -->
-        <option selected>-Select a map type!-</option>
+    <select id="dropdown" onchange="initMap()">
         <option value="polyline">Polyline</option>
         <option value="polygon">Polygon</option>
     </select>
