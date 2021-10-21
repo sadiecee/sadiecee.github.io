@@ -14,7 +14,7 @@
       }
     </style>
 
-    <script>
+<script>
     // initialize and add the map
       function initMap(){
         // the location of uluru
@@ -34,50 +34,36 @@
       var polyline = new google.maps.Polyline({
           strokeColor: "black",
           strokeOpacity: .5,
-          strokeWeight:  1
+          strokeWeight:  1,
           });
 
       var polygon = new google.maps.Polygon({
             strokeColor: "black",
             strokeOpacity: .5,
-            strokeWeight:  1
-            fillColor: "#FF0000",
+            strokeWeight:  1,
+            fillColor: '#FF0000',
             fillOpacity: 0.35,
           });
 
-      function handleselected(randomvar){
-        let theSelection = document.getElementById('dropdown').value
-        if (theSelection == "Polyline") {
+function handleselected(){
+    let theSelection = document.getElementById('dropdown').value
+      if (theSelection == "Polyline") {
           polyline.setMap(map);
-          map.addListener("click",function(e) {
-            var pathpoly - polyline.getPath();
-            pathpoly.push(e.latlng);
+          map.addListener("click", function(e) {
+            var pathline = polyline.getPath();
+            pathline.push(e.latlng);
           })
-          new google.maps.Map(document.getElementById("map"), {
-              zoom: 2,
-              center: {lat: -25.244, lng: 131.036},
-              mapId: "5d5bf34a4d9c28eb",
-            });
         } else {
-          new google.maps.Map(document.getElementById("map"), {
-              zoom: 8,
-              center: {lat: -25.244, lng: 131.036},
-              mapId: "5d5bf34a4d9c28eb",
-            });
+          polygon.setMap(map);
+          map.addListener("click", function(e) {
+            var pathgon = polygon.getPath();
+            pathgon.push(e.latlng)
+            })
         }
       }
+</script>
 
 
-
-
-
-          // new google.maps.Map(document.getElementById("map"), {
-          //     zoom: 8,
-          //     center: {lat:-34.397, lng: 150.644},
-          //     mapId: "5d5bf34a4d9c28eb",
-          //   });
-
-          </script>
         <script
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvvTDwBCPV_xQ0Cpoiei0SE7_-S7Rtlcs&callback=initMap&libraries=&v=weekly"
           async
@@ -90,7 +76,7 @@
 
 
 <div id="selection">
-    <select id="dropdown" onchange="initMap()">
+    <select id="dropdown" onchange="handleselected()">
         <option value="polyline">Polyline</option>
         <option value="polygon">Polygon</option>
     </select>

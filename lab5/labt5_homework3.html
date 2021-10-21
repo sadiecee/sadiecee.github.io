@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Task 1 of Homework: Complete a web mapping application using
-    Google Maps API</title>
+    <title>Task 1 of Homework: Complete a web mapping application using Google Maps API</title>
 
     <style type="text/css">
       /* set up the size of the div element that contains the map */
@@ -18,49 +17,271 @@
     // initialize and add the map
       function initMap(){
         // the location of uluru
-        const uluru = { lat: -25.244, lng: 131.036 };
+        const centerish = { lat: 25.244, lng: 90.036 };
         // the map, centered at uluru
         const map = new google.maps.Map(document.getElementById("map"), {
           zoom: 1,
-          center: uluru,
-          mapTypeId: "terrain",
+          center: centerish,
+          //mapTypeId: "terrain",
         });
         // the marker, positioned at uluru
-        const marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
+
+        const taj_description =
+        '<div id="content">' +
+        '<div id="siteNotice">' +
+          "</div>" +
+          '<h1 id="firstHeading" class="firstHeading">Taj Mahal</h1>' +
+          '<div id="bodyContent">' +
+          "<p><b>Taj Mahal</b>, also referred to as <b>Crown of the Palace</b>, " +
+          "is an ivory-white marble mausoleum on the right bank of the river Yamuna in the Indian city of Agra. " +
+          "It was commissioned in 1632 by the Mughal emperor Shah Jahan  " +
+          "to house the tomb of his favourite wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself. " +
+          "The tomb is the centrepiece of a 17-hectare (42-acre) complex, " +
+          ", which includes a mosque and a guest house, and is set in formal  " +
+          "gardens bounded on three sides by a crenellated wall. " +
+          // '<p>Attribution:Taj_Mahal,<a
+          //   href="https://en.wikipedia.org/wiki/Taj_Mahal#/media/File:India_Uttar_Pradesh_location_map.svg">
+          //   ' +
+          //   "https://en.wikipedia.org/wiki/Taj_Mahal</a> " +
+          //   "(last visited June 22, 2009).</p>" +
+        "</div>" +
+      "</div>";
+        const tajinfow = new google.maps.InfoWindow({
+          content: taj_description,
         });
+
+    const GreatWall_description =
+        '<div id="content">' +
+        '<div id="siteNotice">' +
+          "</div>" +
+          '<h1 id="firstHeading" class="firstHeading">Taj Mahal</h1>' +
+          '<div id="bodyContent">' +
+          "<p><b>Taj Mahal</b>, also referred to as <b>Crown of the Palace</b>, " +
+          "is an ivory-white marble mausoleum on the right bank of the river Yamuna in the Indian city of Agra. " +
+          "It was commissioned in 1632 by the Mughal emperor Shah Jahan  " +
+          "to house the tomb of his favourite wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself. " +
+          "The tomb is the centrepiece of a 17-hectare (42-acre) complex, " +
+          ", which includes a mosque and a guest house, and is set in formal  " +
+          "gardens bounded on three sides by a crenellated wall. " +
+          // '<p>Attribution:Taj_Mahal,<a
+          //   href="https://en.wikipedia.org/wiki/Taj_Mahal#/media/File:India_Uttar_Pradesh_location_map.svg">
+          //   ' +
+          //   "https://en.wikipedia.org/wiki/Taj_Mahal</a> " +
+          //   "(last visited June 22, 2009).</p>" +
+        "</div>" +
+      "</div>";
+
+      const GreatWall_info = new google.maps.InfoWindow({
+        content: GreatWall_description,
+      });
+
+      const Petra_description =
+          '<div id="content">' +
+          '<div id="siteNotice">' +
+            "</div>" +
+            '<h1 id="firstHeading" class="firstHeading">Taj Mahal</h1>' +
+            '<div id="bodyContent">' +
+            "<p><b>Taj Mahal</b>, also referred to as <b>Crown of the Palace</b>, " +
+            "is an ivory-white marble mausoleum on the right bank of the river Yamuna in the Indian city of Agra. " +
+            "It was commissioned in 1632 by the Mughal emperor Shah Jahan  " +
+            "to house the tomb of his favourite wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself. " +
+            "The tomb is the centrepiece of a 17-hectare (42-acre) complex, " +
+            ", which includes a mosque and a guest house, and is set in formal  " +
+            "gardens bounded on three sides by a crenellated wall. " +
+            // '<p>Attribution:Taj_Mahal,<a
+            //   href="https://en.wikipedia.org/wiki/Taj_Mahal#/media/File:India_Uttar_Pradesh_location_map.svg">
+            //   ' +
+            //   "https://en.wikipedia.org/wiki/Taj_Mahal</a> " +
+            //   "(last visited June 22, 2009).</p>" +
+          "</div>" +
+        "</div>";
+
+        const Petra_info = new google.maps.InfoWindow({
+          content: Petra_description,
+        });
+
+        const ChirstB_description =
+            '<div id="content">' +
+            '<div id="siteNotice">' +
+              "</div>" +
+              '<h1 id="firstHeading" class="firstHeading">Taj Mahal</h1>' +
+              '<div id="bodyContent">' +
+              "<p><b>Taj Mahal</b>, also referred to as <b>Crown of the Palace</b>, " +
+              "is an ivory-white marble mausoleum on the right bank of the river Yamuna in the Indian city of Agra. " +
+              "It was commissioned in 1632 by the Mughal emperor Shah Jahan  " +
+              "to house the tomb of his favourite wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself. " +
+              "The tomb is the centrepiece of a 17-hectare (42-acre) complex, " +
+              ", which includes a mosque and a guest house, and is set in formal  " +
+              "gardens bounded on three sides by a crenellated wall. " +
+              // '<p>Attribution:Taj_Mahal,<a
+              //   href="https://en.wikipedia.org/wiki/Taj_Mahal#/media/File:India_Uttar_Pradesh_location_map.svg">
+              //   ' +
+              //   "https://en.wikipedia.org/wiki/Taj_Mahal</a> " +
+              //   "(last visited June 22, 2009).</p>" +
+            "</div>" +
+          "</div>";
+
+          const ChristB_info = new google.maps.InfoWindow({
+            content: ChristB_description,
+          });
+
+          const MachuPicchu_description =
+              '<div id="content">' +
+              '<div id="siteNotice">' +
+                "</div>" +
+                '<h1 id="firstHeading" class="firstHeading">Taj Mahal</h1>' +
+                '<div id="bodyContent">' +
+                "<p><b>Taj Mahal</b>, also referred to as <b>Crown of the Palace</b>, " +
+                "is an ivory-white marble mausoleum on the right bank of the river Yamuna in the Indian city of Agra. " +
+                "It was commissioned in 1632 by the Mughal emperor Shah Jahan  " +
+                "to house the tomb of his favourite wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself. " +
+                "The tomb is the centrepiece of a 17-hectare (42-acre) complex, " +
+                ", which includes a mosque and a guest house, and is set in formal  " +
+                "gardens bounded on three sides by a crenellated wall. " +
+                // '<p>Attribution:Taj_Mahal,<a
+                //   href="https://en.wikipedia.org/wiki/Taj_Mahal#/media/File:India_Uttar_Pradesh_location_map.svg">
+                //   ' +
+                //   "https://en.wikipedia.org/wiki/Taj_Mahal</a> " +
+                //   "(last visited June 22, 2009).</p>" +
+              "</div>" +
+            "</div>";
+
+            const MachuPicchu_info = new google.maps.InfoWindow({
+              content: MachuPicchu_description,
+            });
+
+          const Itza_description =
+              '<div id="content">' +
+              '<div id="siteNotice">' +
+                "</div>" +
+                '<h1 id="firstHeading" class="firstHeading">Taj Mahal</h1>' +
+                '<div id="bodyContent">' +
+                "<p><b>Taj Mahal</b>, also referred to as <b>Crown of the Palace</b>, " +
+                "is an ivory-white marble mausoleum on the right bank of the river Yamuna in the Indian city of Agra. " +
+                "It was commissioned in 1632 by the Mughal emperor Shah Jahan  " +
+                "to house the tomb of his favourite wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself. " +
+                "The tomb is the centrepiece of a 17-hectare (42-acre) complex, " +
+                ", which includes a mosque and a guest house, and is set in formal  " +
+                "gardens bounded on three sides by a crenellated wall. " +
+                // '<p>Attribution:Taj_Mahal,<a
+                //   href="https://en.wikipedia.org/wiki/Taj_Mahal#/media/File:India_Uttar_Pradesh_location_map.svg">
+                //   ' +
+                //   "https://en.wikipedia.org/wiki/Taj_Mahal</a> " +
+                //   "(last visited June 22, 2009).</p>" +
+              "</div>" +
+            "</div>";
+
+            const Itza_info = new google.maps.InfoWindow({
+              content: Itza_description,
+            });
+
+            const Colosseum_description =
+                '<div id="content">' +
+                '<div id="siteNotice">' +
+                  "</div>" +
+                  '<h1 id="firstHeading" class="firstHeading">Taj Mahal</h1>' +
+                  '<div id="bodyContent">' +
+                  "<p><b>Taj Mahal</b>, also referred to as <b>Crown of the Palace</b>, " +
+                  "is an ivory-white marble mausoleum on the right bank of the river Yamuna in the Indian city of Agra. " +
+                  "It was commissioned in 1632 by the Mughal emperor Shah Jahan  " +
+                  "to house the tomb of his favourite wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself. " +
+                  "The tomb is the centrepiece of a 17-hectare (42-acre) complex, " +
+                  ", which includes a mosque and a guest house, and is set in formal  " +
+                  "gardens bounded on three sides by a crenellated wall. " +
+                  // '<p>Attribution:Taj_Mahal,<a
+                  //   href="https://en.wikipedia.org/wiki/Taj_Mahal#/media/File:India_Uttar_Pradesh_location_map.svg">
+                  //   ' +
+                  //   "https://en.wikipedia.org/wiki/Taj_Mahal</a> " +
+                  //   "(last visited June 22, 2009).</p>" +
+                "</div>" +
+              "</div>";
+
+              const Colosseum_info = new google.maps.InfoWindow({
+                content: Colosseum_description,
+              });
+
+
         const tagim = "C:\Users\acer\web_mappingc\sadiecee.github.io\lab5\taj.jpg"
         const TajMahal = new google.maps.Marker({
           position: { lat: 27.175, lng: 78.042 },
           map: map,
+          imageIcon: tagim,
         });
+        TajMahal.addListener("click", () => {
+          tajinfow.open({
+            anchor: TajMahal,
+            map,
+            shouldFocus: false,
+          })
+        })
         const GreatWall = new google.maps.Marker({
           position: { lat: 40.432, lng: 116.570 },
           map: map,
         });
+        GreatWall.addListener("click", () => {
+          GreatWall_info.open({
+            anchor: GreatWall,
+            map,
+            shouldFocus: false,
+          })
+        })
         const Petra = new google.maps.Marker({
           position: { lat: 30.329, lng: 35.444 },
           map: map,
         });
+        Petra.addListener("click", () => {
+          Petra_info.open({
+            anchor: Petra,
+            map,
+            shouldFocus: false,
+          })
+        })
         const ChristB = new google.maps.Marker({
           position: { lat: 22.952, lng: 43.211 },
           map: map,
         });
+        ChristB.addListener("click", () => {
+          ChristB_info.open({
+            anchor: ChristB,
+            map,
+            shouldFocus: false,
+          })
+        })
         const MachuPicchu = new google.maps.Marker({
           position: { lat: 13.163, lng: 72.455 },
           map: map,
         });
+        MachuPicchu.addListener("click", () => {
+          MachuPicchu_info.open({
+            anchor: MachuPicchu,
+            map,
+            shouldFocus: false,
+          })
+        })
         const Itza = new google.maps.Marker({
           position: { lat: 20.684, lng: 88.568 },
           map: map,
-          imageIcon: "put the url",
-          content:
+          imageIcon: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+          //content:
         });
+        Itza.addListener("click", () => {
+          Itza_info.open({
+            anchor: Itza,
+            map,
+            shouldFocus: false,
+          })
+        })
         const Colosseum = new google.maps.Marker({
           position: { lat: 41.890, lng: 12.492 },
           map: map,
         });
+        Colosseum.addListener("click", () => {
+          Colosseum_info.open({
+            anchor: Colosseum,
+            map,
+            shouldFocus: false,
+          })
+        })
       }
 
 
