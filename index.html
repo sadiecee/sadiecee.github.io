@@ -1,6 +1,23 @@
 <!doctype html>
 <html>
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-
+xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keq
+q/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-
+xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keq
+q/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="">
+    </script>
+
+  <script src="javascript/secret_keys.js"></script>
   <title>Sadie Murray</title>
 <!-- all styling for this document is contained in an external document -->
   <link rel="stylesheet" type="text/css" href="css/main_style.css">
@@ -25,6 +42,7 @@
         <a href="https://www.clarku.edu/departments/geography/">Geography
         Department</a> of <a href="https://clarku.edu">Clark University</a>.</p>
     </div>
+    <a href="Choropleth Map in Leaflet.html" target="_blank"> The States map will open in a new tab.</a>
     <div id="research-interests">
       <h3>Research interests:</h3>
       <ol>
@@ -62,6 +80,20 @@
    document.writeln("Copyright &copy; " + year);
    </script>
   </div>
+  <h3>My First Webmap</h3>
+  <div id="mapid" style="width: 600px; height: 400px; margin: auto;">
+
+    <script>
+
+    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{y}?access_token={accessToken}', {
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      accessToken: mapbox_access_token,
+    }).addTo(mymap);
+  </script>
+
 </body>
 
 </html>
