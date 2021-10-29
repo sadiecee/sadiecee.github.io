@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/map_styles.css">
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -10,8 +11,8 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin="">
-//BOBBY -- used second integrity code here as a test -- seemed to work better than using 1st integrity code twice
     </script>
+    <link rel="stylesheet" type="text/css" href="css/map_styles.css">
 
   <script src="javascript/secret_keys.js"></script>
   <title>Sadie Murray</title>
@@ -88,6 +89,38 @@
       id: 'mapbox/streets-v11',
       accessToken: mapbox_access_token,
     }).addTo(mymap);
+
+    var marker = L.marker([51.5,-0.09]).addTo(mymap);
+
+    var circle = L.circle([51.508, -0.11], {
+      color: 'red',
+      fillColor: '#f03',
+      fillOpacity: 0.5,
+      radius: 500
+    }).addTo(mymap);
+
+    var polygon = L.polygon([
+      [51.509, -0.08],
+      [51.503, -0.06],
+      [51.51, -0.047]
+    ]).addTo(mymap);
+
+    marker.bindPopup("<b>Hello World!</b><br>I am a popup.").openPopup();
+    circle.bindPopup("I am a circle.");
+    polygon.bindPopup("I am a polygon.");
+
+    marker.on('click', function(e){
+      mymap.setView(e.latlng, 14);
+    });
+
+    circle.on('click', function(e){
+      mymap.setView(e.latlng, 13);
+    });
+
+    polygon.on('click', function(e){
+      mymap.setView(e.latlng, 13);
+    });
+
   </script>
 
 </body>
