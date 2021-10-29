@@ -82,13 +82,35 @@
 
     <script>
 
-    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+    var mymap = L.map('mapid');
 
+    var ZoomViewer = L.Control.extend({
+      onAdd: function(){
+        var gauge = L.DomUtil.create('div');
+        gauge.style.width = '200px';
+        gauge.style.background = 'rgba(255,255,255,0.5)';
+        gauge.style.textAlign = 'left';
+        mymap.on('zoomstart zoom zoomend', function(ev){
+          gauge.innerHTML = 'Zoom level: ' + mymap.getZoom()
+        })
+        return gauge;
+      }
+    });
+
+    (new ZoomViewer).addTo(mymap);
+
+    mymap.setView([0,0,], 1);
+
+/* MAPBOX TITLE LAYER
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       maxZoom: 18,
-      id: 'mapbox/streets-v11',
+      id: 'mapbox/satellite-streets-v11',
       accessToken: mapbox_access_token,
     }).addTo(mymap);
+*/
+
+  L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+  }).addTo(mymap);
 
     var marker = L.marker([51.5,-0.09]).addTo(mymap);
 
