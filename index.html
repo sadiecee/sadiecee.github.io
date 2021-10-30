@@ -19,6 +19,11 @@
 <!-- all styling for this document is contained in an external document -->
   <link rel="stylesheet" type="text/css" href="css/main_style.css">
   <script src="javascript/external.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/opencagedata/leafletopencagesearch@d4cbd36122efc8d17152b4177ed0e12165305441/dist/css/L.Control.OpenCag
+eData.Search.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/opencagedata/leaflet-opencagesearch@d4cbd36122efc8d17152b4177ed0e12165305441/dist/js/L.Control.OpenCage
+Search.min.js"></script>
+
 </head>
 <body>
   <div id="body-container">
@@ -77,12 +82,18 @@
    document.writeln("Copyright &copy; " + year);
    </script>
   </div>
-  <h3>My First Webmap</h3>
+  <h3>Geocoding Map</h3>
   <div id="mapid" style="width: 600px; height: 400px; margin: auto;">
 
     <script>
 
     var mymap = L.map('mapid');
+
+    var options = {
+      key: geocoder_api_key,
+      limit: 10
+    };
+    var control = L.Control.openCageSearch(options).addTo(mymap);
 
     var ZoomViewer = L.Control.extend({
       onAdd: function(){
@@ -108,7 +119,7 @@
       accessToken: mapbox_access_token,
     }).addTo(mymap);
 */
-
+/*OPEN STREET VIEW TILE LAYER
   L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
   }).addTo(mymap);
 
@@ -127,6 +138,12 @@
       [51.51, -0.047]
     ]).addTo(mymap);
 
+    var polyline = L.polyline([
+      [51.506, -0.08],
+      [51.502, -0.06],
+      [51.507, -0.047]
+    ]).addTo(mymap);
+
     marker.bindPopup("<b>Hello World!</b><br>I am a popup.").openPopup();
     circle.bindPopup("I am a circle.");
     polygon.bindPopup("I am a polygon.");
@@ -142,7 +159,7 @@
     polygon.on('click', function(e){
       mymap.setView(e.latlng, 13);
     });
-
+/*
   </script>
 
 </body>
