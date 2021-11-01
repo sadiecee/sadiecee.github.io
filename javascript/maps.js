@@ -22,13 +22,13 @@ var ZoomViewer = L.Control.extend({
 (new ZoomViewer).addTo(mymap);
 
 //DISTORT IMAGE VIEWER
-// adds a Google Satellite layer with a toner label overlay
-// map.addGoogleMutant();
-//
-// map.whenReady(function() {
-//   // By default, 'img' will be placed centered on the map view specified above
-//   img = L.distortableImageOverlay('example.jpg').addTo(map);
-// });
+adds a Google Satellite layer with a toner label overlay
+map.addGoogleMutant();
+
+map.whenReady(function() {
+  // By default, 'img' will be placed centered on the map view specified above
+  img = L.distortableImageOverlay('example.jpg').addTo(map);
+});
 
 //alternative options
 // img = L.distortableImageOverlay('example.jpg', {
@@ -38,7 +38,7 @@ var ZoomViewer = L.Control.extend({
 
 
 //FULL SCREEN PLUGIN
-//map.addControl(new L.Control.Fullscreen());
+map.addControl(new L.Control.Fullscreen());
 
 
 //EDITABLE MARKER STUFF -- ADDED
