@@ -107,13 +107,13 @@ marker.on('click', function(e){
 });
 
 
-/* MAPBOX TITLE LAYER
+ MAPBOX TITLE LAYER
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
   maxZoom: 18,
   id: 'mapbox/satellite-streets-v11',
   accessToken: mapbox_access_token,
 }).addTo(mymap);
-*/
+
 
 // OPEN STREET VIEW TILE LAYER
 // L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
