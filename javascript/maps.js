@@ -22,7 +22,6 @@ var ZoomViewer = L.Control.extend({
 (new ZoomViewer).addTo(mymap);
 
 //DISTORT IMAGE VIEWER
-adds a Google Satellite layer with a toner label overlay
 map.addGoogleMutant();
 
 map.whenReady(function() {
