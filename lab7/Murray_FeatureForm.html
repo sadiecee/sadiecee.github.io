@@ -21,13 +21,13 @@
         const map = new Map({
           basemap: "topo-vector"
         });
-        const view = new MapView({
+        const Myview = new MapView({
           container: "viewDiv", // Reference to the view div created in step 5
           map: map, // Reference to the map object created before the view
           zoom: 4, // Sets zoom level based on level of detail (LOD)
           center: [15, 65] // Sets center point of view using longitude,latitude
         });
-        // example of my widget
+        // creating my widget
         const featureForm = new FeatureForm({
           //creating the div or physical location of the form
           container: "formDiv",
@@ -35,12 +35,19 @@
           feature: graphic,
           //specifying the forms template
           formTemplate: template
-});
+        });
+        //adding my widget to the view
+        view.ui.add(featureForm, {
+          position: "top-right"
+        });
+
+
 
       });
     </script>
   </head>
   <body>
     <div id="viewDiv"></div>
+    <div id="formDiv"></div>
   </body>
 </html>
