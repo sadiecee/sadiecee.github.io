@@ -27,15 +27,9 @@
           zoom: 4, // Sets zoom level based on level of detail (LOD)
           center: [15, 65] // Sets center point of view using longitude,latitude
         });
-        // Create the HTML div element programmatically at runtime and set to the widget's container
-const basemapGallery = new BasemapGallery({
-  view: view,
-  container: document.createElement("div")
-});
-
-// Add the widget to the top-right corner of the view
-view.ui.add(basemapGallery, {
-  position: "top-right"
+        const templates = new FeatureTemplates({
+          container: "templatesDiv",
+          layers: layers
 });
 
       });
@@ -43,5 +37,6 @@ view.ui.add(basemapGallery, {
   </head>
   <body>
     <div id="viewDiv"></div>
+    <div id="templatesDiv"></div>
   </body>
 </html>
