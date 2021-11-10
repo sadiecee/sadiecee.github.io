@@ -17,7 +17,13 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.21/"></script>
     <script>
-      require(["esri/Map", "esri/views/MapView", "esri/widgets/FeatureTemplates"], (Map, MapView, FeatureTemplates) => {
+      require(["esri/Map", "esri/views/MapView", "esri/widgets/FeatureTemplates", "esri/layers/FeatureLayer"], (Map, MapView, FeatureTemplates, FeatureLayer) => {
+
+        const fl = new FeatureLayer({
+          url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3"
+        });
+
+
         const map = new Map({
           basemap: "topo-vector"
         });
@@ -29,12 +35,13 @@
         });
         const templates = new FeatureTemplates({
           container: "templatesDiv",
-          layers: layers
+        //  layers: fl
         });
 
         view.ui.add(templates, "top-right");
+        map.add(fl);  // adds the layer to the map
+        });
 
-      });
     </script>
   </head>
   <body>
