@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.21/"></script>
     <script>
-      require(["esri/Map", "esri/views/MapView", "esri/form/FormTemplate", "esri/widgets/FeatureForm", "esri/Graphic"], (Map, MapView, FormTemplate, FeatureForm, Graphic) => {
+      require(["esri/Map", "esri/views/MapView", "esri/form/FormTemplate", "esri/widgets/FeatureForm", "esri/Graphic", "esri/form/elements/GroupElement", "esri/form/elements/FieldElement"], (Map, MapView, FormTemplate, FeatureForm, Graphic, GroupElement, FieldElement) => {
         const map = new Map({
           basemap: "topo-vector"
         });
@@ -54,13 +54,41 @@
           symbol: polylineSymbol,
           attributes: polylineAtt
         });
+        const fieldElement1 = new FieldElement({
+          fieldName: "inspector",
+          label: "Inspector name"
+        });
+
+        const fieldElement2 = new FieldElement({
+          fieldName: "inspdate",
+          label: "Inspection date",
+          description: "Date inspection was handled",
+          input: { // autocastable to DateTimePickerInput
+            type: "datetime-picker",
+            includeTime: true,
+            min: 1547678342000,
+            max: 1610836742000
+          }
+        });
+        const fieldElement3 = new FieldElement({
+          fieldName: "placename",
+          label: "Business name",
+          editable: false
+        });
+
+// Create the group element and pass in elements from above
+  const groupElement = new GroupElement({
+    label: "Business contact information",
+    description: "Enter the business contact name",
+    elements:[fieldElement1, fieldElement2, fieldElement3]
+  });
         const mytemplate = new FormTemplate({
           title: "Inspector report",
           description: "Enter all relevant information below",
+          elements: [groupElement] // Add all elements to the template
 });
 
 //
-Myview.graphics.add(polylineGraphic);
 //         // creating my widget
         const featureForm = new FeatureForm({
           //creating the div or physical location of the form
@@ -71,7 +99,8 @@ Myview.graphics.add(polylineGraphic);
           formTemplate: mytemplate
         });
         //adding my widget to the view
-        Myview.ui.add(featureForm, "top-right");
+Myview.graphics.add(polylineGraphic);
+Myview.ui.add(featureForm, "top-right");
 //
       });
     </script>
