@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.21/"></script>
     <script>
-      require(["esri/Map", "esri/views/MapView", "esri/widgets/Editor", "esri/widgets/Editor/CreateWorkflow", "esri/widgets/Editor/UpdateWorkflow"], (Map, MapView, Editor, CreateWorkflow, UpdateWorkflow) => {
+      require(["esri/Map", "esri/views/MapView", "esri/widgets/Editor", "esri/widgets/Editor/CreateWorkflow", "esri/widgets/Editor/UpdateWorkflow", "esri/widgets/support/SnappingControls", "esri/views/interactive/snapping/SnappingOptions"], (Map, MapView, Editor, CreateWorkflow, UpdateWorkflow, SnappingControls, SnappingOptions) => {
         const map = new Map({
           basemap: "topo-vector"
         });
@@ -27,9 +27,22 @@
           zoom: 4, // Sets zoom level based on level of detail (LOD)
           center: [15, 65] // Sets center point of view using longitude,latitude
         });
-        const editor = new Editor({
-          view: view
+        const snappingControls = new SnappingControls({
+        label: "Configure snapping options",
+        view: view,
+        snappingOptions: editor.snappingOptions // Autocastable to SnappingOptions
         });
+
+        const editor = new Editor({
+          view: view,
+          allowedWorkflows: ["create"],
+          snappingOptions: { // Autocastable to snapping options
+ enabled: true, // sets the global snapping option that controls both geometry constraints (self-snapping) and feature snapping.
+}
+});
+
+// Add the SnappingControls widget to provide a UI for easy toggling of Editor snapping. Associate the SnappingControls widget to the Editor's snappingOptions as seen below. If nothing is set within the Editor, the defaults will display and all layers associated with the map that support snapping display within the snapping layers as disabled.
+
 
         view.ui.add(editor, "top-right");
 
