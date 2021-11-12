@@ -21,30 +21,22 @@
         const map = new Map({
           basemap: "topo-vector"
         });
-        const view = new MapView({
+        const Myview = new MapView({
           container: "viewDiv", // Reference to the view div created in step 5
           map: map, // Reference to the map object created before the view
           zoom: 4, // Sets zoom level based on level of detail (LOD)
           center: [15, 65] // Sets center point of view using longitude,latitude
         });
-        const snappingControls = new SnappingControls({
-        label: "Configure snapping options",
-        view: view,
-        snappingOptions: editor.snappingOptions // Autocastable to SnappingOptions
-        });
 
         const editor = new Editor({
-          view: view,
+          view: Myview,
           allowedWorkflows: ["create"],
-          snappingOptions: { // Autocastable to snapping options
- enabled: true, // sets the global snapping option that controls both geometry constraints (self-snapping) and feature snapping.
-}
 });
 
 // Add the SnappingControls widget to provide a UI for easy toggling of Editor snapping. Associate the SnappingControls widget to the Editor's snappingOptions as seen below. If nothing is set within the Editor, the defaults will display and all layers associated with the map that support snapping display within the snapping layers as disabled.
 
 
-        view.ui.add(editor, "top-right");
+        Myview.ui.add(editor, "top-right");
 
       });
     </script>
