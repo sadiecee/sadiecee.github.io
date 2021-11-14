@@ -19,6 +19,31 @@
     <script>
       require(["esri/Map", "esri/views/MapView", "esri/widgets/FeatureTemplates", "esri/layers/FeatureLayer", "esri/widgets/FeatureTemplates/TemplateItem", "esri/widgets/BasemapGallery"], (Map, MapView, FeatureTemplates, FeatureLayer, TemplateItem, BasemapGallery) => {
 
+        const map = new Map({
+          basemap: "topo-vector"
+        });
+
+
+        const view = new MapView({
+          container: "viewDiv", // Reference to the view div created in step 5
+          map: map, // Reference to the map object created before the view
+          zoom: 4, // Sets zoom level based on level of detail (LOD)
+          center: [-115, 45] // Sets center point of view using longitude,latitude
+        });
+
+
+        const basemapGallery = new BasemapGallery({ //uses the basemap gallery as a feature template form
+          view: view,  //references the view object created above
+          container: basemapGalleryDiv //places this in the body div
+        });
+
+        // Add the widget to the top-right corner of the view
+        view.ui.add(basemapGallery, { //add the widget to the top right
+          position: "top-right"
+        });
+      });
+
+//CODE I ENDED UP NOT USING
 //         let featurelayer = new FeatureLayer({
 //           url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3"
 //         });
@@ -94,31 +119,7 @@
 //         map.add(featurelayer);  // adds the layer to the map
 //         view.ui.add(templates, "top-right");
 //         });
-        const map = new Map({
-          basemap: "topo-vector"
-        });
 
-
-        const view = new MapView({
-          container: "viewDiv", // Reference to the view div created in step 5
-          map: map, // Reference to the map object created before the view
-          zoom: 4, // Sets zoom level based on level of detail (LOD)
-          center: [-115, 45] // Sets center point of view using longitude,latitude
-        });
-
-
-        const basemapGallery = new BasemapGallery({ //uses the basemap gallery as a feature template form
-          view: view,  //references the view object created above
-          container: basemapGalleryDiv //places this in the body div
-        });
-
-        // Add the widget to the top-right corner of the view
-        view.ui.add(basemapGallery, { //add the widget to the top right
-          position: "top-right"
-        });
-      });
-
-        // HTML markup
 
     </script>
   </head>
