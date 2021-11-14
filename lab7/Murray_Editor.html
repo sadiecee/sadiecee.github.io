@@ -17,28 +17,112 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
     <script src="https://js.arcgis.com/4.21/"></script>
     <script>
-      require(["esri/Map", "esri/views/MapView", "esri/widgets/Editor", "esri/widgets/Editor/CreateWorkflow", "esri/widgets/Editor/UpdateWorkflow", "esri/widgets/support/SnappingControls", "esri/views/interactive/snapping/SnappingOptions"], (Map, MapView, Editor, CreateWorkflow, UpdateWorkflow, SnappingControls, SnappingOptions) => {
-        const map = new Map({
-          basemap: "topo-vector"
-        });
-        const Myview = new MapView({
-          container: "viewDiv", // Reference to the view div created in step 5
-          map: map, // Reference to the map object created before the view
-          zoom: 4, // Sets zoom level based on level of detail (LOD)
-          center: [15, 65] // Sets center point of view using longitude,latitude
+      require(["esri/Map", "esri/views/MapView", "esri/widgets/Editor", "esri/widgets/Editor/Workflow", "esri/widgets/Editor/CreateWorkflow", "esri/widgets/Editor/UpdateWorkflow", "esri/widgets/support/SnappingControls", "esri/views/interactive/snapping/SnappingOptions", "esri/layers/FeatureLayer", "esri/widgets/Expand", "esri/WebMap"], (Map, MapView, Editor, Workflow, CreateWorkflow, UpdateWorkflow, SnappingControls, SnappingOptions, FeatureLayer, Expand, WebMap) => {
+        let editConfigCrimeLayer, editConfigPoliceLayer;
+
+        // Create a map from the referenced webmap item id
+        let webmap = new WebMap({
+          portalItem: {
+            id: "154ba34201774bb29f7c3b68adf52b6a"
+          }
         });
 
+        //sets up an editable view
+        let view = new MapView({
+          container: "viewDiv",
+          map: webmap
+        });
+
+      view.when(() => {//this allows the view to separate out the dif areas of crime
+        // This function takes a 'grouping' object containing a featuretemplate and a feature layer.
+
+        function customGroup(grouping) { //takes an object that contains a featuretemplate and a featurelayer
+          let groupHeading = "Police Routes"; //names the heading that is not grouped with the rest
+          if (grouping.layer.title.toLowerCase() === "crime map") { //if the grouping title is crime map, make the following changes:
+            switch (grouping.template.name) {
+              case "Criminal Homicide":
+              case "Rape":
+              case "Robbery":
+              case "Aggravated Assault":
+                groupHeading = "Violent Crime";
+                break;
+              case "Arson":
+              case "Burglary":
+              case "Larceny":
+              case "Motor Vehicle Theft":
+                groupHeading = "Property Crime";
+                break;
+              default:
+                groupHeading = "Quality of Life";
+            }
+          }
+          return groupHeading;
+        }
+
+      view.map.layers.forEach((layer) => { //this is adding each layer to the map by iterating over it
+        editConfigPoliceLayer = { //adds the changeable police layer
+          layer: layer,
+          fieldConfig: [{ //configures the field name and number that are present in the form
+            name: "PatrolType",
+            label: "Type of Patrol"
+          }]
+        }
+      });
+
+        // Create the Editor
         const editor = new Editor({
-          view: Myview,
-          allowedWorkflows: ["create"],
-});
+          view: view,  // Pass in the configurations created in the view group loop
+          layerInfos: [editConfigPoliceLayer], //adds my layer to the editor widget
+          supportingWidgetDefaults: { //this alters/overrides the widget default
+            featureTemplates: { //ensures that our custom group will be used
+              groupBy: customGroup
+            }
+          },
+
+        });
+
+
+        // Add widgets to top and bottom right of the view
+        view.ui.add(editor, "top-right");
+
+
+//UNUSED OR DISCARDED CODE
+// const featureLayer = new FeatureLayer({
+//   url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/IncidentsReport/FeatureServer/0",
+//   outFields: ["*"],
+//   id: "incidentsLayer"
+// });
+//
+//         const editor = new Editor({
+//           view: Myview,
+//           allowedWorkflows: ["create"],
+// });
+//
+// const editor = new Editor({
+//   layerInfos: [{
+//     view: view,
+//     layer: featureLayer, // pass in the feature layer
+//     fieldConfig: [ // Specify which fields to configure
+//       {
+//         name: "fulladdr",
+//         label: "Full Address"
+//       },
+//       {
+//         name: "neighborhood",
+//         label: "Neighborhood"
+//       }],
+//     enabled: true, // default is true, set to false to disable editing functionality
+//     addEnabled: true, // default is true, set to false to disable the ability to add a new feature
+//     updateEnabled: false // default is true, set to false to disable the ability to edit an existing feature
+//   //  deleteEnabled: false // default is true, set to false to disable the ability to delete features
+//   }]
+// });
+
 
 // Add the SnappingControls widget to provide a UI for easy toggling of Editor snapping. Associate the SnappingControls widget to the Editor's snappingOptions as seen below. If nothing is set within the Editor, the defaults will display and all layers associated with the map that support snapping display within the snapping layers as disabled.
 
-
-        Myview.ui.add(editor, "top-right");
-
       });
+    });
     </script>
   </head>
   <body>
